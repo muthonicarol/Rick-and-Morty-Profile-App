@@ -12,16 +12,23 @@ function Home() {
   }, [search]);
 
   return (
-    <div className="p-4">
-      <h1  className = "text-center text-7xl pb-3.5"> Rick And Morty Characters</h1>
-      <input
-        type="text"
-        placeholder="Search characters"
-        className="p-2 mb-4 border rounded w-full font-bold text-amber-400"
-        value={search}
-        onChange={(e) => setSearch(e.target.value)}
+    <div className="container mx-auto p-4">
+      <h1 className="text-center text-7xl pb-3.5">Rick And Morty Characters</h1>    
+      <div className="flex items-center mb-4">
         
-      />
+        <input                 
+          type="text"
+          placeholder="Search characters"
+          className="p-2 border font-bold text-amber-400 rounded-l"
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
+        />
+
+        <button
+          onClick={() => fetch(`https://rickandmortyapi.com/api/character?name=${search}`)}
+          className="p-2 bg-amber-400 text-white font-bold rounded-r hover:bg-amber-500 transition"  > Search </button>
+      </div>
+      
       <div className = "grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
         {characters.map(character => (
           <Link to={`/character/${character.id}`} key={character.id}>

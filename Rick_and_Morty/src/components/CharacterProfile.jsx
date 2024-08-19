@@ -11,16 +11,20 @@ function CharacterProfile() {
       .then(data => setCharacter(data));
   }, [id]);
 
-  if (!character) return <div>Loading...</div>;
+  if (!character) return <div>Loading...</div>; 
 
   return (
-    <div className="p-4 ">
-      <h1>{character.name}</h1>
-      <img src={character.image} alt={character.name} className="w-48 h-48 object-cover rounded font-bold" />
-      <p>Gender:{character.gender}</p>
-      <p>Status: {character.status}</p>
-      <p>Species: {character.species}</p>
-    </div>
+    <div className="p-8 flex flex-col items-center text-center">
+  <h1 className="text-4xl font-bold mb-4">{character.name}</h1>
+  <img
+    src={character.image}
+    alt={character.name}
+    className="w-64 h-64 object-cover rounded-lg mb-4"
+  />
+  <p className="text-xl font-semibold">Gender: {character.gender}</p>
+  <p className="text-xl font-semibold">Status: {character.status}</p>
+  <p className="text-xl font-semibold">Species: {character.species}</p>
+</div>
   );
 }
 
